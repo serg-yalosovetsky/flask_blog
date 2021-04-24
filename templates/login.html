@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+    {% block content %}
+        <h2>{% block title %} Войти  {% endblock %}</h2>
+
+  
+        <form id="former" method="post">
+            <div class="form-group">
+                <label for="email">email</label>
+                {{ form.email(class="form-control") }}
+                
+            </div>
+        
+            <div class="form-group">
+                <label for="content">Content</label>
+                
+                {{ form.password(class="form-control", placeholder='password') }}
+            
+            </div>
+            <div class="form-group">
+                {{form.remember_me}} Remember me 
+            </div>
+            
+            <div class="form-group">
+                <!-- {{form.submit(class="btn btn-primary")}}   -->
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="fullname">fullname</label>
+                {{ form.username(class="form-control") }}
+                <!-- <input type="text" name="fullname"
+                    
+                    value = "{{ request.form.fullname  }}">  -->
+            </div>
+            <div class="form-group">
+                <input type="submit" name="register" id="input" formmethod="post" form="former" class="btn btn-secondary" value="register"
+                    formaction="{{url_for('register')}}" >
+            </div>
+        </form> 
+        
+
+
+    {% endblock %}

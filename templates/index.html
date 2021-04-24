@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+    {% block content %}
+    <h1>{% block title %} Welcome to FlaskBlog {% endblock %}</h1>
+    
+        {% if user %}
+        <h1> привет, {{user.username |upper}}!</h1>
+        <a href="{{url_for('logout')}}"> logout</a>
+        {% else %}
+        <h1> привет, WORLD!</h1>
+        <a href="{{url_for('login')}}"> login</a>
+
+        {% endif %}
+
+        {% if posts %}
+            {% for post in posts %}
+                <a href= "{{url_for('edit', id=post.id)}}">
+                    <h2>{{ post.title }}</h2>
+                </a>
+                
+                <span class="badge badge-primary"> {{ post.created }}</span>
+            {% endfor %}
+        {% endif %}
+
+    {% endblock %}
+
